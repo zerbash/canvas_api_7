@@ -1,0 +1,23 @@
+<?php
+
+function canvas_api_menu() {
+
+	$items['admin/config/services/canvas_api'] = array(
+		'title' => 'Canvas Integration',
+		'description' => 'Connection details for using Instructure\'s Canvas API.',
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array('canvas_api_form'),
+		'file' => 'forms/canvas_api.form',
+		'access arguments' => array('administer site configuration'),
+	);
+  
+  return $items;
+}
+
+function canvas_api($resource){
+	module_load_include('inc','canvas_api','includes/canvas_api');
+	if(module_load_include('inc','canvas_api','includes/canvas_api.' . $resource)){
+		$class = 'Canvas' . ucfirst($resource);
+		return new $class;
+	} 
+}
