@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Implements hook_menu().
+ */
 function canvas_api_menu() {
 
 	$items['admin/config/services/canvas_api'] = array(
@@ -14,6 +17,19 @@ function canvas_api_menu() {
   return $items;
 }
 
+/**
+ * A wrapper function to process Canvas API requests.
+ *
+ * The Canvas API is broken into a number of different "resources": Sections,
+ * Courses, Enrollments, etc. Passing the desired resource into this function
+ * will prepare a helper object for interfacing with the Canvas API. See 
+ * documentation on the child classes for examples.
+ *
+ * @param string $resource
+ * 
+ * @return object
+ * 
+ */
 function canvas_api($resource){
 	module_load_include('inc','canvas_api','includes/canvas_api');
 	if(module_load_include('inc','canvas_api','includes/canvas_api.' . $resource)){

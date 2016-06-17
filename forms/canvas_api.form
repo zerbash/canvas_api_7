@@ -5,7 +5,7 @@ function canvas_api_form($form,$form_state){
     $form['canvas_api_institution'] = array(
       '#type' => 'textfield',
       '#title' => t('Institution'),
-      '#description' => 'Enter your institution\'s name as it appears in your Canvas URL. <br>i.e. https://<strong>your-institutions-name</strong>.instructure.com',
+      '#description' => t('Enter your institution\'s name as it appears in your Canvas URL. <br>i.e. https://<strong>your-institutions-name</strong>.instructure.com'),
       '#default_value' => variable_get('canvas_api_institution'),
     );
 
@@ -19,10 +19,11 @@ function canvas_api_form($form,$form_state){
       ),
       '#default_value' => variable_get('canvas_api_environment'),
     );
+    
     $form['canvas_api_token'] = array(
       '#type' => 'textfield',
       '#title' => t('Token'),
-      '#description' => 'Enter you Canvas access token.',
+      '#description' => t('Enter your Canvas access token. This token can be generated on your profile page: https://<strong>your-institutions-name</strong>.instructure.com/profile. This account will need to have the appropriate access permissions for your API calls.'),
       '#default_value' => variable_get('canvas_api_token'),
     ); 
     
